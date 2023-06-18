@@ -1,0 +1,22 @@
+{
+  "name": "Quick",
+  "version": "1.0.0",
+  "description": "Your Figma Plugin",
+  "main": "code.js",
+  "scripts": {
+    "build": "webpack",
+    "watch": "npm run build -- --watch"
+  },
+  "author": "",
+  "license": "",
+  "devDependencies": {
+    "@figma/plugin-typings": "^1.65.0",
+    "ts-loader": "^9.4.3",
+    "typescript": "*",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "@types/d3": "^7.4.0",
+    "d3": "^7.8.5"
+  }
+}
