@@ -7,7 +7,7 @@ mode: argv.mode === 'production' ? 'production' : 'development',
 // This is necessary because Figma's 'eval' works differently than normal eval
 devtool: argv.mode === 'production' ? false : 'inline-source-map',
   entry: {
-    code: './src/code.ts' // This is the entry point for our plugin code.
+    code: './src/main.ts' // This is the entry point for our plugin code.
   },
   module: {
     rules: [
