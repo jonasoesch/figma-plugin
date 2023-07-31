@@ -3,6 +3,8 @@ import { hexToFigmaRGB } from "./helpers"
 
 const namePrefix = "--"
 
+
+
 export function createRect(name:string, spec:RectSpec, frame:any) {
 
     const existingEl = findExisting(name, frame) // Can be null
@@ -23,7 +25,10 @@ export function createRect(name:string, spec:RectSpec, frame:any) {
 
 
 export function createEllipse(name:string, spec:EllipseSpec, frame:any) {
-    const r = figma.createEllipse()
+
+    const existingEl = findExisting(name, frame) // Can be null
+
+    const r = existingEl || figma.createEllipse()
     r.name = namePrefix + name.toString()
     r.x= spec.x || 0
     r.y =  spec.y || 0
@@ -42,8 +47,9 @@ export function createEllipse(name:string, spec:EllipseSpec, frame:any) {
 
 export function createText(name:string, spec:TextSpec, frame:any) {
     
+    const existingEl = findExisting(name, frame) // Can be null
 
-    const text = figma.createText()
+    const text =  existingEl || figma.createText()
     text.name = namePrefix + name.toString()
     text.fontName = spec.font || { family: "GT America", style: "Regular" }
     text.fontSize = spec.fontSize || 14
@@ -59,6 +65,7 @@ export function createText(name:string, spec:TextSpec, frame:any) {
 export function createLine(name:string, spec:LineSpec, frame:any) {
 
     const existingEl = findExisting(name, frame) // Can be null
+
 
     const line = existingEl || figma.createLine()
     line.name = setName(name, existingEl)
@@ -176,3 +183,5 @@ interface EllipseSpec {
     stroke?: string,
     strokeWeight?: number
 }
+
+declare type DrawNode = RectangleNode | EllipseNode | PolygonNode | StarNode | VectorNode | LineNode | TextNode
